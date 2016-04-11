@@ -1,0 +1,21 @@
+body
+{
+  font: 1.2em sans-serif;
+  text-align: center;
+}
+
+button
+{
+  outline: none;
+  border: none;
+  padding: 15px;
+}
+
+#button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9
+{
+  font-size: 60px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
