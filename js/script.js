@@ -17,9 +17,11 @@
       button9 = document.querySelector("#button9");
   
   var buttonReset = document.querySelector("#reset");
+
+  var result = document.querySelector("#result");
   
   // Data
-  var user, comp;
+  var user, comp, whoWon;
   var gameOver = false;
   
   var buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9];
@@ -61,7 +63,15 @@
     checkWin();
     
     if (gameOver)
+    {
+      if (whoWon === user)
+        result.innerHTML = "FTW!!!";
+      else
+        result.innerHTML = "Try Harder!";
+      
       return;
+    }
+
     if (this.innerHTML !== "")
       return;
     
@@ -75,7 +85,14 @@
     checkWin();
     
     if (gameOver)
+    {
+      if (whoWon === user)
+        result.innerHTML = "FTW!!!";
+      else
+        result.innerHTML = "Try Harder!";
+
       return;
+    }
     
     var randNum = Math.floor(Math.random() * 9) + 1,
         randBox = "#button" + randNum,
@@ -89,11 +106,18 @@
   
   function checkCombination(b1, b2, b3)
   {
+    // check if the three buttons have the same content
     if (b1.innerHTML !== "" && b1.innerHTML === b2.innerHTML && b1.innerHTML === b3.innerHTML)
     {
       b1.style.backgroundColor = "limeGreen";
       b2.style.backgroundColor = "limeGreen";
       b3.style.backgroundColor = "limeGreen";
+
+      // Check who have won the game
+      if (b1.innerHTML === user)
+        whoWon = user;
+      else
+        whoWon = comp;
       
       gameOver = true;
     }
@@ -102,6 +126,7 @@
   
   function checkWin()
   {
+    // All possible combinations for wining in a tic-tac-toe game
     checkCombination(button1,button2,button3);
     checkCombination(button4,button5,button6);
     checkCombination(button7,button8,button9);
@@ -119,6 +144,8 @@
       buttons[i].innerHTML = "";  
       buttons[i].style.backgroundColor = "";
     }
+
+    result.innerHTML = "";
     
     gameOver = false;
     

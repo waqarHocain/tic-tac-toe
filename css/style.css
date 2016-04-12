@@ -1,13 +1,18 @@
 body
 {
-  font: 1.2em sans-serif;
+  font: 1.2em monospace;
   text-align: center;
 }
 
+h1
+{
+  font-size: 48px;
+}
 button
 {
-  outline: none;
+  cursor: pointer;
   border: none;
+  outline: none;
   padding: 15px;
 }
 
@@ -18,4 +23,10 @@ button
   height: 100px;
   margin-bottom: 10px;
   vertical-align: top;
+}
+
+#result
+{
+  font-size: 36px;
+  font-weight: bold;
 }
