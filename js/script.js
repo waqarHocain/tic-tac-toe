@@ -1,3 +1,11 @@
+/**
+ * Tic-Tac-Toe
+ * A simple tic-tac-toe game, user v/s computer
+
+ * Waqar Hocain
+ * <waqarmaxtan@gmail.com>
+ */
+
 (function()
 {
   // Elements
@@ -37,6 +45,7 @@
     sectionBoard.style.display = "none";
   }
   
+  // hide the intro section and display the board
   function startGame()
   {
     sectionIntro.style.display = "none";
@@ -63,14 +72,7 @@
     checkWin();
     
     if (gameOver)
-    {
-      if (whoWon === user)
-        result.innerHTML = "FTW!!!";
-      else
-        result.innerHTML = "Try Harder!";
-      
       return;
-    }
 
     if (this.innerHTML !== "")
       return;
@@ -85,14 +87,7 @@
     checkWin();
     
     if (gameOver)
-    {
-      if (whoWon === user)
-        result.innerHTML = "FTW!!!";
-      else
-        result.innerHTML = "Try Harder!";
-
       return;
-    }
     
     var randNum = Math.floor(Math.random() * 9) + 1,
         randBox = "#button" + randNum,
@@ -102,6 +97,9 @@
       randCont.innerHTML = comp;
     else
       moveComp();
+
+    // Again check the board, after comp has made a move
+    checkWin();
   }
   
   function checkCombination(b1, b2, b3)
@@ -124,6 +122,14 @@
       
   }
   
+  function shoutWinner()
+  {
+      if (whoWon === user)
+        result.innerHTML = "FTW!!!";
+      else
+        result.innerHTML = "Try Harder!";
+  }
+
   function checkWin()
   {
     // All possible combinations for wining in a tic-tac-toe game
@@ -135,6 +141,12 @@
     checkCombination(button3,button6,button9);
     checkCombination(button1,button5,button9);
     checkCombination(button3,button5,button7);
+
+    if (gameOver)
+    {
+      shoutWinner();
+      return;
+    }
   }
   
   function resetGame()
